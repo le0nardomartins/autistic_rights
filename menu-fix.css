@@ -1,0 +1,55 @@
+/* Correções para o menu mobile */
+@media screen and (max-width: 768px) {
+    /* Certifique-se de que o menu tem prioridade de z-index */
+    .header-menu {
+        z-index: 2000 !important;
+        position: fixed !important;
+        width: 100% !important;
+        background-color: rgba(34, 29, 35, 0.98) !important;
+    }
+    
+    /* Menu sempre visível quando ativo, independente da rolagem */
+    .nav-links.active {
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        top: 70px !important;
+        background-color: rgba(34, 29, 35, 0.98) !important;
+        z-index: 1999 !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+        pointer-events: auto !important; /* Garante que o menu é clicável */
+    }
+    
+    /* Anula comportamento anterior */
+    .header-menu.scrolled .menu-container:not(:hover) .nav-links.active {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+        pointer-events: auto !important;
+    }
+    
+    /* Garante visibilidade dos links */
+    .nav-links.active li {
+        opacity: 1 !important;
+        animation: navLinkFade 0.5s ease forwards !important;
+        pointer-events: auto !important; /* Garante que itens são clicáveis */
+    }
+    
+    .nav-links.active a {
+        color: white !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+        pointer-events: auto !important; /* Garante que links são clicáveis */
+        cursor: pointer !important;
+    }
+    
+    /* Garantir que quando o menu não está ativo, não tenha interação */
+    .nav-links:not(.active) {
+        pointer-events: none !important;
+    }
+    
+    /* Corrige problemas com a interação do botão de menu */
+    .menu-toggle {
+        cursor: pointer !important;
+        z-index: 2001 !important; /* Garante que está acima de tudo */
+        pointer-events: auto !important;
+    }
+} 
